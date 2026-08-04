@@ -42,3 +42,6 @@ reports.print_transaction_pivot.print_transaction_pivot(
 reports.print_transaction_table.print_transaction_table(
     transactions
 )
+
+print()
+print("complete")
