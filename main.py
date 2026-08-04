@@ -44,4 +44,4 @@ reports.print_transaction_table.print_transaction_table(
 )
 
 print()
-print("complete")
+print("completed")
