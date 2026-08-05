@@ -128,6 +128,21 @@ def prompt_user_for_matching_rule(
 
         print()
 
-        selected_index = int(user_choice) - 1
+        try:
+            selected_option = int(user_choice)
+        except ValueError:
+            print("ERROR: Rule selection must be a whole number.")
+            print()
+            continue
+
+        if selected_option < 1 or selected_option > len(matching_rules):
+            print(
+                f"ERROR: Enter a number from 1 "
+                f"to {len(matching_rules)}."
+            )
+            print()
+            continue
+
+        selected_index = selected_option - 1
 
         return matching_rules[selected_index]
