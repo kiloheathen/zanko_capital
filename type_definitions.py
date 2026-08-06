@@ -1,35 +1,33 @@
 from typing import TypedDict
 
 
-class Transaction(TypedDict):
-    transaction_name: str
-    transaction_datetime: str
-    cost: float
-    category: str | None
-    subcategory: str | None
-    priority: str | None
-
-
-Transactions = dict[str, Transaction]
-
-
-class SubcategoryDefinition(TypedDict):
-    category: str
-    priority: str
-
-
-SubcategoryDefinitions = dict[str, SubcategoryDefinition]
-
-
-class RuleCondition(TypedDict):
+class Conditions(TypedDict):
     field: str
     operator: str
-    value: str | float
+    value: str
 
 
-class AssignmentRule(TypedDict):
-    assign_to: str
-    conditions: list[RuleCondition]
-
-
-AssignmentRules = dict[str, AssignmentRule]
+# RuleValue: TypeAlias = str | int | float | bool | None
+#
+# ComparisonOperator: TypeAlias = Literal[
+#     "contains",
+#     "equals",
+#     "less_than",
+#     "less_than_or_equal",
+#     "greater_than",
+#     "greater_than_or_equal",
+# ]
+#
+#
+# class RuleCondition(TypedDict):
+#     field: str
+#     operator: ComparisonOperator
+#     value: RuleValue
+#
+#
+# class AssignmentRule(TypedDict):
+#     assign_to: str
+#     conditions: list[RuleCondition]
+#
+#
+# AssignmentRules: TypeAlias = dict[str, AssignmentRule]
