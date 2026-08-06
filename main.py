@@ -16,10 +16,6 @@ def main() -> None:
         data.transaction_data.raw_transactions
     )
 
-    transactions = data.load_data.add_transaction_fields(
-        transactions
-    )
-
     transactions = (
         classification.rule_based_assignment.auto_assign_subcategories(
             transactions,
