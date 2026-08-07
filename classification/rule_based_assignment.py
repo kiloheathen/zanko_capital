@@ -96,35 +96,17 @@ def prompt_user_for_matching_rule(
     subcategory_assign_rules,
 ):
     while True:
-        print()
-        print("MULTIPLE AUTO-ASSIGN RULES MATCHED")
-        print(f"Transaction ID: {transaction_id}")
-        print(
-            f"{transaction_details['transaction_name']}: "
-            f"${transaction_details['cost']:.2f}"
+        print_transaction_details_for_matching_rules(
+            transaction_id,
+            transaction_details
         )
-        print(transaction_details["transaction_datetime"])
-        print()
-        print("Choose which auto-assign rule should be applied:")
 
-        for option_number, rule_name in enumerate(
+        print_rules_to_choose_from(
             matching_rules,
-            start=1,
-        ):
-            subcategory = (
-                subcategory_assign_rules[rule_name]["assign_to"]
-            )
+            subcategory_assign_rules,
+        )
 
-            print(
-                f"{option_number}. "
-                f"{rule_name} -> {subcategory}"
-            )
-
-        print()
-
-        user_choice = input(
-            "input rule number >>> "
-        ).strip()
+        user_choice = input("input rule number >>> ").strip()
 
         print()
 
@@ -146,3 +128,39 @@ def prompt_user_for_matching_rule(
         selected_index = selected_option - 1
 
         return matching_rules[selected_index]
+
+
+def print_transaction_details_for_matching_rules(
+        transaction_id,
+        transaction_details,
+):
+    print()
+    print("MULTIPLE AUTO-ASSIGN RULES MATCHED")
+    print(f"Transaction ID: {transaction_id}")
+    print(
+        f"{transaction_details['transaction_name']}: "
+        f"${transaction_details['cost']:.2f}"
+    )
+    print(transaction_details["transaction_datetime"])
+    print()
+    print("Choose which auto-assign rule should be applied:")
+
+
+def print_rules_to_choose_from(
+    matching_rules,
+    subcategory_assign_rules,
+):
+    for option_number, rule_name in enumerate(
+            matching_rules,
+            start=1,
+    ):
+        subcategory = (
+            subcategory_assign_rules[rule_name]["assign_to"]
+        )
+
+        print(
+            f"{option_number}. "
+            f"{rule_name} -> {subcategory}"
+        )
+
+    print()
